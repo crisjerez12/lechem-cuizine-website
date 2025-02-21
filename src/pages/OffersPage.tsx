@@ -129,7 +129,7 @@ export default function OffersPage() {
                           : "See more"}
                       </button>
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4 ">
                       {occasion.attributes.map((attr, index) => (
                         <span
                           key={index}
@@ -172,8 +172,8 @@ export default function OffersPage() {
 
         {/* Inclusions Dialog */}
         {showInclusionsDialog && selectedPackage && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md">
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[60vh] overflow-y-auto pr-4">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg md:text-xl font-poppins font-medium">
                   {selectedPackage.title} Inclusions
