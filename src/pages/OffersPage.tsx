@@ -57,6 +57,7 @@ export default function OffersPage() {
   };
 
   const handleReservationSubmit = async (reservationData: any) => {
+    console.log(reservationData);
     const { data, error } = await supabase
       .from("online_reservations")
       .insert(reservationData)

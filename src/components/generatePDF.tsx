@@ -16,6 +16,7 @@ interface ReservationData {
   mobile_number: string;
   name: string;
   notes: string;
+  choices: string;
   package: string;
   pax: string;
   reservation_date: string;
@@ -174,6 +175,10 @@ const MyDocument: React.FC<MyDocumentProps> = ({ reservationData }) => (
         <View style={styles.infoRow}>
           <Text style={styles.infoLabel}>Allergies/Notes:</Text>
           <Text style={styles.infoValue}>{reservationData.notes}</Text>
+        </View>
+        <View style={styles.infoRow}>
+          <Text style={styles.infoLabel}>Food Choices:</Text>
+          <Text style={styles.infoValue}>{reservationData.choices}</Text>
         </View>
       </View>
       <View style={styles.divider} />

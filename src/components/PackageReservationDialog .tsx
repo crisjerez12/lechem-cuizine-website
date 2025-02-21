@@ -29,6 +29,7 @@ export default function PackageReservationDialog({
     pax: "25",
     location: "",
     notes: "",
+    choices: "",
     reservationDate: "",
   });
 
@@ -86,6 +87,7 @@ export default function PackageReservationDialog({
       pax: formData.pax,
       location: formData.location,
       notes: formData.notes || "N/A",
+      choices: formData.choices || "N/A",
       reservation_date: formData.reservationDate,
       package: packageName,
       total_price: packagePrice,
@@ -172,7 +174,10 @@ export default function PackageReservationDialog({
                     type="text"
                     name="fullName"
                     value={formData.fullName}
-                    onChange={handleInputChange}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[0-9]/g, "");
+                      setFormData((prev) => ({ ...prev, fullName: value }));
+                    }}
                     className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary"
                     placeholder="Enter your full name"
                   />
@@ -260,14 +265,27 @@ export default function PackageReservationDialog({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Notes (Optional)
+                Any allergies? or notes?
               </label>
               <textarea
                 name="notes"
                 value={formData.notes}
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary"
-                placeholder="Any allergies? or notes?"
+                placeholder="e.g. allergic to shrimps"
+                rows={3}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Food Choices
+              </label>
+              <textarea
+                name="choices"
+                value={formData.choices}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary"
+                placeholder="e.g. Adobo, Sisig, Fried Chicken"
                 rows={3}
               />
             </div>
