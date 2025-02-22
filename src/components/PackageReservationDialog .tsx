@@ -47,7 +47,9 @@ export default function PackageReservationDialog({
       setFormData((prev) => ({ ...prev, [name]: numericValue }));
     }
   };
-
+  const isSaturday = (date: string) => {
+    return new Date(date).getDay() === 6;
+  };
   const handleSubmit = () => {
     if (!formData.reservationDate) {
       toast.error("Please select a date for your reservation");
@@ -161,6 +163,13 @@ export default function PackageReservationDialog({
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-secondary"
                 min={new Date().toISOString().split("T")[0]}
+                onInput={(e) => {
+                  const target = e.target as HTMLInputElement;
+                  if (isSaturday(target.value)) {
+                    toast.error("Reservations are not available on Saturdays");
+                    target.value = "";
+                  }
+                }}
               />
             </div>
 
